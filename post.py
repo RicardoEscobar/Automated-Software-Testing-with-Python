@@ -1,5 +1,8 @@
+from typing import Optional
+
+
 class Post:
-    def __init__(self, title: str = None, content: str = None) -> None:
+    def __init__(self, title: Optional[str] = None, content: Optional[str] = None) -> None:
         self.title = title
         self.content = content
 
