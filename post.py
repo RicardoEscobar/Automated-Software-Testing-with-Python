@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Dict
 
 
 class Post:
@@ -6,7 +6,7 @@ class Post:
         self.title = title
         self.content = content
 
-    def json(self) -> dict:
+    def json(self) -> Dict[Optional[str], Optional[str]]:
         """Returns a dict with the attributes."""
         json = dict()
         if self.title is not None:
