@@ -2,7 +2,7 @@
 Contains unit tests for the Post class.
 """
 import unittest
-from post import Post
+from controller.post import Post
 
 
 class PostTest(unittest.TestCase):
