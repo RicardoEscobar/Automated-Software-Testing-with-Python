@@ -56,6 +56,14 @@ class PostTest(unittest.TestCase):
         expected = 'Post(title="Test title.")'
         self.assertEqual(repr(post), expected)
 
+        post = Post('')  # first positional title argument
+        expected = 'Post(title="")'
+        self.assertEqual(repr(post), expected)
+
+        post = Post(None, '')  # second positional title argument
+        expected = 'Post(content="")'
+        self.assertEqual(repr(post), expected)
+
 
 if __name__ == '__main__':
     unittest.main()
