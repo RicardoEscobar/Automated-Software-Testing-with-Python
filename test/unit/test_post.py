@@ -24,19 +24,19 @@ class PostTest(unittest.TestCase):
         """Validates json method returns a dict containing title and content."""
         post = Post(title=self.title, content=self.content)
         expected = {'title': 'Test title.', 'content': 'Test content.'}
-        self.assertDictEqual(post.json(), expected)
+        self.assertEqual(post.json(), expected)
 
         post = Post()
         expected = dict()
-        self.assertDictEqual(post.json(), expected)
+        self.assertEqual(post.json(), expected)
 
         post = Post(title=self.title)
         expected = {'title': 'Test title.'}
-        self.assertDictEqual(post.json(), expected)
+        self.assertEqual(post.json(), expected)
 
         post = Post(content=self.content)
         expected = {'content': 'Test content.'}
-        self.assertDictEqual(post.json(), expected)
+        self.assertEqual(post.json(), expected)
 
     def test_repr(self):
         """Validate the repr method."""
