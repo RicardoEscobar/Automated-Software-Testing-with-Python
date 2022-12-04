@@ -41,7 +41,7 @@ class PostTest(unittest.TestCase):
     def test_repr(self):
         """Validate the repr method."""
         post = Post(title=self.title, content=self.content)
-        expected = 'Post(title="Test title.", content="Test content.")'
+        expected = f'Post(title={repr(self.title)}, content={repr(self.content)})'
         self.assertEqual(repr(post), expected)
 
         post = Post()
@@ -49,19 +49,27 @@ class PostTest(unittest.TestCase):
         self.assertEqual(repr(post), expected)
 
         post = Post(content=self.content)
-        expected = 'Post(content="Test content.")'
+        expected = f'Post(content={repr(self.content)})'
         self.assertEqual(repr(post), expected)
 
         post = Post(title=self.title)
-        expected = 'Post(title="Test title.")'
+        expected = f'Post(title={repr(self.title)})'
         self.assertEqual(repr(post), expected)
 
-        post = Post('')  # first positional title argument
-        expected = 'Post(title="")'
+        # Validate with empty string
+        empty_string = ''
+        post = Post(empty_string)  # first positional title argument
+        expected = f'Post(title={repr(empty_string)})'
         self.assertEqual(repr(post), expected)
 
-        post = Post(None, '')  # second positional title argument
-        expected = 'Post(content="")'
+        post = Post(None, empty_string)  # second positional title argument
+        expected = f'Post(content={repr(empty_string)})'
+        self.assertEqual(repr(post), expected)
+
+        # Validate double quote (") character use in title
+        quoted_title = 'This "is" a test.'
+        post = Post(title=quoted_title)
+        expected = f'Post(title={repr(quoted_title)})'
         self.assertEqual(repr(post), expected)
 
 
