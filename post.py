@@ -21,9 +21,9 @@ class Post:
         param = list()
 
         if self.title is not None:
-            param.append(f'title="{self.title}"')
+            param.append(f'title={repr(self.title)}')
         if self.content is not None:
-            param.append(f'content="{self.content}"')
+            param.append(f'content={repr(self.content)}')
 
         result += separator.join(param) + ')'
         return result
