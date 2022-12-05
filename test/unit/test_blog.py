@@ -61,6 +61,7 @@ class BlogTest(unittest.TestCase):
                  'content': 'Test post content.'},
             ]
         }
+        self.assertEqual(blog.json(), expected)
 
         # Test using empty post list
         blog = Blog(title=self.title, author=self.author)
@@ -68,7 +69,6 @@ class BlogTest(unittest.TestCase):
             'title': 'Test title.',
             'author': 'Test author.',
         }
-
         self.assertEqual(blog.json(), expected)
 
 
