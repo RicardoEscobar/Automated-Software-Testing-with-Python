@@ -1,8 +1,11 @@
+"""Unit testing for blog.py"""
 import unittest
 from blog import Blog
 
 
 class BlogTest(unittest.TestCase):
+    """Unit test case for blog.py"""
+
     def setUp(self) -> None:
         self.title = 'Test title.'
         self.author = 'Test author.'
@@ -50,6 +53,7 @@ class BlogTest(unittest.TestCase):
         self.assertEqual(repr(blog), expected)
 
     def test_json(self):
+        """Validating the json method."""
         # Using posts in blog object
         blog = Blog(title=self.title, author=self.author)
         blog.create_post('Test post title.', 'Test post content.')
