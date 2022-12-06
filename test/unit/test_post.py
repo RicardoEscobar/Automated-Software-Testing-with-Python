@@ -1,6 +1,4 @@
-"""2022-11-29 16:04:27
-Contains unit tests for the Post class.
-"""
+"""Contains unit tests for the Post class."""
 import unittest
 from post import Post
 
