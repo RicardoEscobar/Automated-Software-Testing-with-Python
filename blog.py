@@ -21,6 +21,9 @@ class Blog:
         result += separator.join(param) + ')'
         return result
 
+    def __str__(self):
+        return f'{self.title} by {self.author} ({len(self.posts)} post{"s" if len(self.posts) != 1 else None})'
+
     def create_post(self, title: Optional[str] = None, content: Optional[str] = None) -> None:
         """Add a new post into the blog lists"""
         post = Post(title, content)
