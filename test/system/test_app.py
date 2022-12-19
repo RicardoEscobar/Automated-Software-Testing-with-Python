@@ -33,8 +33,6 @@ class BlogTest(unittest.TestCase):
         """Validates that menu function calls the print_blogs function."""
         with patch('app.print_blogs') as mocked_print_blogs:
             with patch('builtins.input', return_value='q') as mocked_input:
-                print(
-                    f'mocked_input.return_value = {repr(mocked_input.return_value)}')
                 app.menu()
                 mocked_print_blogs.assert_called()
 
