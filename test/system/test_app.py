@@ -29,8 +29,13 @@ class BlogTest(unittest.TestCase):
             app.menu()
             mocked_input.assert_called_with(app.MENU_PROMPT)
 
-    def menu_calls_print_blogs(self):
+    def test_menu_calls_print_blogs(self):
         """Validates that menu function calls the print_blogs function."""
-        with patch('blog.menu') as mocked_menu:
-            app.menu()
-            mocked_menu.assert_called()
+        with patch('app.print_blogs') as mocked_print_blogs:
+            with patch('builtins.input', return_value='q') as mocked_input:
+                app.menu()
+                mocked_print_blogs.assert_called()
+
+
+if __name__ == '__main__':
+    unittest.main()
