@@ -50,7 +50,7 @@ class BlogTest(unittest.TestCase):
         app.blogs = {'Test': blog}
         with patch('builtins.input', return_value='Test'):
             with patch('app.print_posts') as mocked_print_posts:
-                with patch('builtins.print') as mocked_print:
+                with patch('builtins.print'):
                     app.ask_read_blog()
 
                     mocked_print_posts.assert_called_with(blog)
