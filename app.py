@@ -43,7 +43,7 @@ def ask_create_blog():
 def ask_read_blog():
     title = input('Enter the blog title you want to read: ')
 
-    print_post(blogs[title])
+    print_posts(blogs[title])
 
 
 def print_posts(blog):
