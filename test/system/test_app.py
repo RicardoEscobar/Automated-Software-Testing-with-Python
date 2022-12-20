@@ -36,6 +36,14 @@ class BlogTest(unittest.TestCase):
                 app.menu()
                 mocked_print_blogs.assert_called()
 
+    def test_ask_create_blog(self):
+        """Validates ask_create_blog function is called."""
+        with patch('builtins.input') as mocked_input:
+            mocked_input.side_effect('Test', 'Test author')
+            app.ask_create_blog()
+
+            self.assertIsNotNone(app.blogs.get('Test'))
+
 
 if __name__ == '__main__':
     unittest.main()
