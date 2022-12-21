@@ -3,6 +3,7 @@ import unittest
 from unittest.mock import patch
 import app
 from blog import Blog
+from post import Post
 
 
 class BlogTest(unittest.TestCase):
@@ -46,6 +47,7 @@ class BlogTest(unittest.TestCase):
             self.assertIsNotNone(app.blogs.get(self.blog_title))
 
     def test_ask_read_blog(self):
+        """Validate ask_read_blog is being called with Blog object."""
         blog = Blog(title='Test', author='Test author')
         app.blogs = {'Test': blog}
         with patch('builtins.input', return_value='Test'):
@@ -54,6 +56,30 @@ class BlogTest(unittest.TestCase):
                     app.ask_read_blog()
 
                     mocked_print_posts.assert_called_with(blog)
+
+    def test_print_posts(self):
+        """Validate print_posts is being called with Blog object."""
+        blog = Blog(title='Test', author='Test author')
+        blog.create_post(title='Test post.', content='Test content.')
+        app.blogs = {'Test': blog}
+
+        with patch('app.print_post') as mocked_print_post:
+            app.print_posts(blog)
+
+            mocked_print_post.assert_called_with(blog.posts[0])
+
+    def test_print_post(self):
+        """Validate print_post funtion works properly."""
+        post = Post(title='Post title.', content='Post content.')
+        expected_print = """--- Post title. ---
+
+Post content.
+
+"""
+        with patch('builtins.print') as mocked_print:
+            app.print_post(post)
+
+            mocked_print.assert_called_with(expected_print)
 
 
 if __name__ == '__main__':
