@@ -81,6 +81,19 @@ Post content.
 
             mocked_print.assert_called_with(expected_print)
 
+    def test_create_post(self):
+        """Validate create_post function."""
+        blog = Blog(title='Test', author='Test author')
+        app.blogs = {'Test': blog}
+
+        with patch('builtins.input') as mocked_input:
+            mocked_input.side_effect = ('Test', 'Test title.', 'Test content.')
+
+            app.ask_create_post()
+
+            self.assertEqual(blog.posts[0].title, 'Test title.')
+            self.assertEqual(blog.posts[0].content, 'Test content.')
+
 
 if __name__ == '__main__':
     unittest.main()
