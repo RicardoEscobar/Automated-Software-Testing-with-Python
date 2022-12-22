@@ -56,4 +56,8 @@ def print_post(post):
 
 
 def ask_create_post():
-    pass
+    blog_name = input('Blog name: ')
+    post_title = input('Post title: ')
+    post_content = input('Post content: ')
+
+    blogs[blog_name].create_post(post_title, post_content)
